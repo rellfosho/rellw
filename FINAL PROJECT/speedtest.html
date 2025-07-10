@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>PUG SPEEDTEST</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="speedtest.css">
+  <style>
+    /* Modal styling */
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 1000;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      overflow: auto;
+      background-color: rgba(0, 0, 0, 0.6);
+    }
+
+    .modal-content {
+      background-color: #1e1f2f;
+      margin: 10% auto;
+      padding: 20px;
+      border-radius: 8px;
+      width: 80%;
+      max-width: 500px;
+      color: white;
+      position: relative;
+    }
+
+    .modal-close {
+      color: #aaa;
+      position: absolute;
+      top: 10px;
+      right: 16px;
+      font-size: 28px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      padding: 16px;
+      font-size: 1.5rem;
+      font-weight: bold;
+    }
+
+    .brand button {
+      font-size: 1rem;
+      padding: 6px 12px;
+      border: none;
+      border-radius: 6px;
+      background: rgb(0, 198, 255);
+      color: #fff;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <!-- Header -->
+  <div class="brand">
+    <span class="brand-logo">&#9900;</span> 
+    <span>SPEEDTEST</span>
+    <button onclick="openModal('aboutModal')">About</button>
+    <button onclick="openModal('serviceModal')">Service</button>
+  </div>
+
+  <!-- App container -->
+  <div id="app"></div>
+
+  <!-- Footer -->
+  <footer style="width:100%;text-align:center;padding:24px 0 12px 0;color:rgb(176,176,176);font-size:1.1rem;position:fixed;left:0;bottom:0;background:rgba(24,27,42,0.95);z-index:10;">
+    <span>Contact: <a href="mailto:rell@gmail.com" style="color:rgb(0,198,255);text-decoration:none;">rell@gmail.com</a></span>
+    <span style="margin-left:32px;">
+      Language:
+      <select id="lang-select" style="font-size:1rem;padding:2px 8px;border-radius:6px;border:1px solid rgb(176,176,176);background:rgb(35,36,58);color:#fff;">
+        <option value="en">English</option>
+        <option value="es">Español</option>
+        <option value="fr">Français</option>
+        <option value="de">Deutsch</option>
+        <option value="zh">中文</option>
+      </select>
+    </span>
+  </footer>
+
+  <!-- About Modal -->
+  <div id="aboutModal" class="modal">
+    <div class="modal-content">
+      <span class="modal-close" onclick="closeModal('aboutModal')">&times;</span>
+      <h2>About PUG SPEEDTEST</h2>
+      <p>This tool allows you to test your internet speed quickly and privately. Built for simplicity and accuracy.</p>
+    </div>
+  </div>
+
+  <!-- Service Modal -->
+  <div id="serviceModal" class="modal">
+    <div class="modal-content">
+      <span class="modal-close" onclick="closeModal('serviceModal')">&times;</span>
+      <h2>Our Services</h2>
+      <p>We provide fast and reliable internet speed testing, including download/upload speed, latency, and more. This service is designed to be lightweight and privacy friendly.</p>
+    </div>
+  </div>
+
+  <!-- Scripts -->
+  <script src="speedtest.js"></script>
+  <script>
+    function openModal(id) {
+      document.getElementById(id).style.display = "block";
+    }
+
+    function closeModal(id) {
+      document.getElementById(id).style.display = "none";
+    }
+
+    window.onclick = function(event) {
+      const about = document.getElementById("aboutModal");
+      const service = document.getElementById("serviceModal");
+      if (event.target === about) {
+        closeModal("aboutModal");
+      }
+      if (event.target === service) {
+        closeModal("serviceModal");
+      }
+    }
+  </script>
+</body>
+</html>
